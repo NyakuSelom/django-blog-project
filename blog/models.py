@@ -19,8 +19,32 @@ class Comment(models.Model):
     updated = models.DateField()
     post = models.ForeignKey(Post)
 
+    def title_first_60(self):
+	return self.title[:60]
+
     def __unicode__(self):
 	return self.body
 
-admin.site.register(Post)
-admin.site.register(Comment)
+class CommentInline(admin.TabularInline):
+    model = Comment
+
+class PostAdmin(admin.ModelAdmin):
+    list_display=('title','created','updated')
+    search_fields = ['title','body']
+    list_filter = ('created',)
+    inlines = [
+	CommentInline,
+    ]
+
+
+
+
+class CommentAdmin(admin.ModelAdmin):
+    list_display= ('title_first_60',)
+    list_filter = ('created','author')
+
+
+
+admin.site.register(Post,PostAdmin)
+admin.site.register(Comment,CommentAdmin)
+
