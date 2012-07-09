@@ -15,14 +15,20 @@ def post_list(request):
     print type(post_list)
     print post_list
     
-    return HttpResponse('This should be a list of posts!')
+    return HttpResponse(post_list)
 
-def post_detail(request, id, showComments=False):
-    pass
+def post_detail(request,id,showComments=False):
+    post_detail=Post.objects.get(id=id)
+    post_comment=Comment.objects.get(id=id)
+
+    return HttpResponse(post_comment)
+
     
 def post_search(request, term):
-    pass
+    post_search =Post.objects.filter(title__contains= term)
+
+    return HttpResponse(post_search)
 
 def home(request):
     print 'it works'
-    return HttpResponse('hello world. Ete zene?') 
+    return HttpResponse('hello world. Ete S3n?') 
