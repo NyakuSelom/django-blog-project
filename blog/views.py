@@ -21,7 +21,7 @@ def post_detail(request,id,showComments=False):
     post_detail=Post.objects.get(id=id)
     post_comment=Comment.objects.get(id=id)
 
-    return HttpResponse(post_comment)
+    return HttpResponse('<h3>'+str(post_detail)+'</h1>'+'</p>'+str(post_comment))
 
     
 def post_search(request, term):
