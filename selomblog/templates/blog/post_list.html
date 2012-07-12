@@ -1,27 +1,29 @@
-{% extends "blog/base.html%"}
+{% extends "blog/base.html"%}
 
- 
-	{% block content %}
-    	    {% for post in posts %}
-		<h2><a href="{{post.get_absolute_url}}">
-		{{post.title}}</h1>
-		</a>
-	    <ul>
+	{%block content%}
+    	    {% for post in posts %}<font color="#696969">
+		<h4><a href="{{post.get_absolute_url}}">
+		{{post.title|upper}}</h1>
+		</a></font>
+	    <ul><font color="#4C787E">
+		<li>
+		{{post.body_first_60}}
+		</li>
+		<br>
 		<li>
 		Created: {{post.created}}
 		</li>
 		<li>
 		Updated: {{post.updated}}
 		</li>
-		<li>
-		post.body_first_60
-		</li>
+		</br>
+</font>
 		</ul>
 	    {% endfor %}
 
-		
 	
-	{% endblock %}
+
+	{%endblock%}
 
 
 

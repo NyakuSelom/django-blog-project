@@ -1,2 +1,47 @@
-{%extends blog/base.html}
+{%extends "blog/base.html"%}
 
+	{%block content%}
+<br><font color="#708090">
+	    Title:  {{post.title}}
+</p>
+	    {{post.body}}
+</p>
+</font>
+</br>
+<br>
+COMMENTS :
+<font color="#1E90FF">
+<p>
+</br>
+		{%for c in comments%}
+
+<br>
+			{{c.body}}
+</br>
+<br>
+			Author: {{c.author}}
+</br>
+<br>
+			Created: {{c.created}}
+</br>
+<br>
+			{{c.updated}}
+</br>
+</p>
+<div>
+	<a href="blog/comments/{{comment.id}}/edit">
+		Edit Comment
+	</a>
+</div>
+		{% endfor %}
+	</font>	
+
+<h3>New Comment:</h3>
+<div>
+    <form method='post' action="">
+<br>
+	{{ form.as_p }}
+	<input type= 'submit' name='Submit'>
+    </form>
+</div>
+{%endblock%}
