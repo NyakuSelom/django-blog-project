@@ -4,7 +4,7 @@
 <br><font color="#708090">
 	    Title:  {{post.title}}
 </p>
-	    {{post.body}}
+	    {{post.body|linebreaks}}
 </p>
 </font>
 </br>
@@ -25,7 +25,7 @@ COMMENTS :
 			Created: {{c.created}}
 </br>
 <br>
-			{{c.updated}}
+			Updated: {{c.updated}}
 </br>
 </p>
 <div>
