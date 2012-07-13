@@ -48,6 +48,22 @@ def post_detail(request,id,showComments=False):
 
     return HttpResponse(t.render(c))
 
+@csrf_exempt    
+def edit_comment(request,id):
+    comments=Comment.objects.get(id=id)
+    post = Post.objects.filter(comment=id)
+    if request.method == 'POST':
+	form=CommentForm(request.POST, instance = comments)
+	if form.is_valid():
+	    form.save()
+	return HttpResponseRedirect(comments.post.get_absolute_url())
+    else:
+	form = CommentForm(instance =comments )
+    t = loader.get_template('blog/edit_comment.html')
+    c = Context({'comments':comments,'form':form})
+    return HttpResponse(t.render(c))
+
+
     
 def post_search(request, term):
     posts =Post.objects.filter(title__contains= term)

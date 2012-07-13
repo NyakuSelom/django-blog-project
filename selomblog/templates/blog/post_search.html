@@ -10,8 +10,10 @@ Results:
 <ul>
 
 {%for post in posts%}
-<li> 
+<li>
+<a href="{{post.get_absolute_url}}">
 {{post}}
+</a>
 </li>
 {%endfor%}
 </ul>

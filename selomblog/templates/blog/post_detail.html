@@ -1,8 +1,11 @@
 {%extends "blog/base.html"%}
 
+
 	{%block content%}
+
+
 <br><font color="#708090">
-	    Title:  {{post.title}}
+	  Title:  {{post.title}}
 </p>
 	    {{post.body|linebreaks}}
 </p>
@@ -10,17 +13,18 @@
 </br>
 <br>
 COMMENTS :
+
 <font color="#1E90FF">
 <p>
 </br>
 		{%for c in comments%}
+<FIELDSET>
 
+			<LEGEND>{{c.author}}</LEGEND>
 <br>
-			{{c.body}}
+			{{c.body|linebreaks}}
 </br>
-<br>
-			Author: {{c.author}}
-</br>
+
 <br>
 			Created: {{c.created}}
 </br>
@@ -28,20 +32,30 @@ COMMENTS :
 			Updated: {{c.updated}}
 </br>
 </p>
+
+
+
 <div>
-	<a href="blog/comments/{{comment.id}}/edit">
-		Edit Comment
+	<a href="/blog/comments/{{c.id}}/edit">
+		<button type="button">Edit Comment</button>
 	</a>
 </div>
+</FIELDSET>
 		{% endfor %}
 	</font>	
+
+
 
 <h3>New Comment:</h3>
 <div>
     <form method='post' action="">
 <br>
 	{{ form.as_p }}
-	<input type= 'submit' name='Submit'>
-    </form>
+	<input type= 'submit' name='Submit' >
+   
+ </form>
 </div>
+
+
+
 {%endblock%}

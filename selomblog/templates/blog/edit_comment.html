@@ -1,2 +1,24 @@
 {%extends "blog/base.html"%}
 
+{%block content%}
+
+
+<h3>{{ comment.post.title}}</h3>
+<h4>Edit:</h4>
+<div>
+    <form method='post' action="">
+<br>
+	{{ form.as_p }}
+	<input type= 'submit' name='Update'>
+    </form>
+</div>
+
+<div>
+	<a href="{{post.get_absolute_url}}">
+		Main
+	</a>
+</div>
+
+
+
+{%endblock%}
