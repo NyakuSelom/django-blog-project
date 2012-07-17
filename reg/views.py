@@ -15,17 +15,22 @@ def do_login(request):
 	uname = request.POST['username']
 	passwd = request.POST['password']
 	user = authenticate(username=uname,password=passwd)
+	form = LoginForm(request.POST)
         if user== None:
-	    print "authentication failed"
+	   
+	    return HttpResponse("authentication failed")
+
 
 	else:
 	    if user.is_active:
 		login(request, user)
+		return HttpResponseRedirect('/blog/posts')
+
 	    else:
-		print "Your Account Has been disabled"
-	return Http
-    
+		return HttpResponse("Your Account Has been disabled")
+
     form = LoginForm()
+
     return render_to_response('reg/do_login.html', {
         'form': form,
         'logged_in': request.user.is_authenticated()

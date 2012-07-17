@@ -3,13 +3,16 @@
 
 {% block content %}
 
-{% if user.is_authenticated() %}
-    Logged in as {{request.POST['username']}}
-   <a><href = > 
+{% if user.is_authenticated %}
+    Logged in as {{user.username}}
+   
 {%else %}
   <form action="." method="post">
      {{ form.as_p }}
      <input type="submit" value="Submit" value="Login!" />
   </form>
 {% endif %}
+<p><a href="/blog/">
+ 		<button type="button">Return To Home </button>
+	</a></p>
 {% endblock %}

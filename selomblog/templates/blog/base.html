@@ -1,11 +1,13 @@
 <html>
 
-<center><img src="http://webbugbd.com/images/header.jpg" width="100%" height="20%" alt="My blog" /></center>
-    <head>
+
+
+    <head >
 <style type="text/css">
+
 body
 {
-background-color:#FFEFD5;
+background-image:url(http://www.scottcampbellbooks.com/assets/images/background.jpg);
 }
 </style>
 	<title>
@@ -26,12 +28,21 @@ background-color:#FFEFD5;
 	<p><a href="/blog/posts">
  		<center><button type="button"> Main page </button></center>
 	</a></p>
+{%if user.is_authenticated%}
+<p><a href="/reg/logout">
+ 		<button type="button"> Logout </button>
+	</a></p>
+{%else %}
+<p><a href="/reg/login">
+ 		<button type="button">login </button>
+	</a></p>
+{% endif %}
 	
 	<div id="content">
 	    {%block content%}
 	<p>
 
-<center><img src="http://superbsongs.files.wordpress.com/2011/03/welcome-beach1.jpg" width="100%" height="70%" alt="My blog" />
+<center><img src="http://a7.sphotos.ak.fbcdn.net/hphotos-ak-ash3/522496_10150645955847038_2020872913_n.jpg" width="85%" height="80%" alt="My blog" />
 </p><center>
 
 	    {%endblock%}
